@@ -3,189 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cafetería Escolar</title>
+    <title>Mi Registro Estudiantil</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body>
 
-    <header class="encabezado">
-        <div class="logo">☕</div>
-        <div>
-            <h1>Cafetería Escolar</h1>
-            <p>Sistema de gestión de pedidos</p>
-        </div>
-    </header>
+    <div class="contenedor">
+        <header>
+            <div class="icono">🎓</div>
+            <h1>REGISTRO ESTUDIANTIL</h1>
+            <p>Ingresa tus datos para completar el registro</p>
+        </header>
 
-    <main class="contenedor">
+        <form id="formulario">
 
-        <section class="bienvenida">
-            <span class="etiqueta">SISTEMA DE PEDIDOS</span>
-            <h2>¡Realiza tu pedido!</h2>
-            <p>Selecciona tus productos favoritos y disfruta de nuestras promociones.</p>
-        </section>
-
-        <section class="panel">
-            <h2>🛒 Registrar pedido</h2>
-
-            <form id="formPedido">
-                <div class="campo">
-                    <label for="cliente">Nombre del cliente</label>
-                    <input
-                        type="text"
-                        id="cliente"
-                        placeholder="Escribe tu nombre completo"
-                        maxlength="80"
-                        required
-                    >
-                </div>
-
-                <div class="campo">
-                    <label for="producto">Selecciona un producto</label>
-                    <select id="producto" required>
-                        <option value="">-- Elige un producto --</option>
-                        <option value="P001">Sandwich de pollo — $1.75</option>
-                        <option value="P002">Hot dog — $1.25</option>
-                        <option value="P003">Empanada — $0.75</option>
-                        <option value="P004">Enchilada — $1.00</option>
-                        <option value="P005">Pastel de chocolate — $1.50</option>
-                        <option value="P006">Licuado de fresa — $1.25</option>
-                        <option value="P007">Café con leche — $1.00</option>
-                        <option value="P008">Galletas — $0.50</option>
-                    </select>
-                </div>
-
-                <div class="campo">
-                    <label for="cantidad">Cantidad</label>
-                    <input
-                        type="number"
-                        id="cantidad"
-                        min="1"
-                        max="999"
-                        step="1"
-                        value="1"
-                        required
-                    >
-                </div>
-
-                <div class="campo">
-                    <label>Método de pago</label>
-                    <div class="pagos">
-                        <label class="opcion-pago">
-                            <input type="radio" name="pago"
-                                   value="Efectivo" checked>
-                            💵 Efectivo
-                        </label>
-
-                        <label class="opcion-pago">
-                            <input type="radio" name="pago"
-                                   value="Tarjeta">
-                            💳 Tarjeta
-                        </label>
-                    </div>
-                </div>
-
-                <div class="calculadora">
-                    <div>
-                        <span>Precio unitario</span>
-                        <strong id="precio">$0.00</strong>
-                    </div>
-                    <div>
-                        <span>Subtotal</span>
-                        <strong id="subtotal">$0.00</strong>
-                    </div>
-                    <div>
-                        <span>Descuento</span>
-                        <strong id="descuento" class="verde">$0.00</strong>
-                    </div>
-                    <div class="fila-total">
-                        <span>Total a pagar</span>
-                        <strong id="total">$0.00</strong>
-                    </div>
-                    <p class="aviso">🎉 ¡Obtén 10% de descuento al comprar
-                        5 unidades o más del mismo producto!</p>
-                </div>
-
-                <button type="submit" class="boton principal">
-                    ✓ REALIZAR PEDIDO
-                </button>
-            </form>
-        </section>
-
-        <section class="panel" id="resultado" hidden>
-            <h2>✅ Pedido registrado</h2>
-            <div id="detallePedido" class="detalle-pedido"></div>
-            <button type="button" id="nuevoPedido" class="boton secundario">
-                Registrar otro pedido
-            </button>
-        </section>
-
-        <section class="panel">
-            <div class="titulo-tabla">
-                <div>
-                    <h2>📋 Historial de pedidos</h2>
-                    <p>Consulta los pedidos registrados.</p>
-                </div>
-
-                <div class="acciones">
-                    <button type="button" id="exportar"
-                            class="boton principal">
-                        ⬇ Descargar TXT
-                    </button>
-
-                    <button type="button" id="abrirArchivo"
-                            class="boton secundario">
-                        📂 Cargar TXT
-                    </button>
-
-                    <input type="file" id="archivoTXT"
-                           accept=".txt,text/plain" hidden>
-                </div>
+            <div class="campo">
+                <label for="nombre">Nombre completo:</label>
+                <input type="text" id="nombre"
+                       placeholder="Escribe tu nombre completo"
+                       required>
             </div>
 
-            <div class="tabla-contenedor">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Código</th>
-                            <th>Cliente</th>
-                            <th>Producto</th>
-                            <th>Cantidad</th>
-                            <th>Total</th>
-                            <th>Pago</th>
-                        </tr>
-                    </thead>
-                    <tbody id="listaPedidos">
-                        <tr>
-                            <td colspan="6" class="vacio">
-                                No hay pedidos registrados todavía.
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="campo">
+                <label for="nie">NIE:</label>
+                <input type="text" id="nie"
+                       placeholder="Ingresa tu NIE"
+                       required>
             </div>
 
-            <p class="nota">
-                El archivo TXT contiene los nueve campos de cada pedido,
-                separados por el símbolo |.
-            </p>
-        </section>
-
-        <section class="resumen">
-            <div class="resumen-icono">📈</div>
-            <div>
-                <p>RESUMEN DE VENTAS</p>
-                <h2 id="totalVentas">$0.00</h2>
-                <span id="numeroPedidos">0 pedidos registrados</span>
+            <div class="campo">
+                <label for="edad">Edad:</label>
+                <input type="number" id="edad"
+                       placeholder="Ingresa tu edad"
+                       min="1" max="120" required>
             </div>
+
+            <div class="campo">
+                <label for="grado">Grado:</label>
+                <select id="grado" required>
+                    <option value="">Seleccionar grado</option>
+                    <option value="7° grado">7° grado</option>
+                    <option value="8° grado">8° grado</option>
+                    <option value="9° grado">9° grado</option>
+                    <option value="1° Bachillerato">1° Bachillerato</option>
+                    <option value="2° Bachillerato">2° Bachillerato</option>
+                    <option value="3° Bachillerato">3° Bachillerato</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="seccion">Sección:</label>
+                <select id="seccion" required>
+                    <option value="">Seleccionar sección</option>
+                    <option value="A">Sección A</option>
+                    <option value="B">Sección B</option>
+                    <option value="C">Sección C</option>
+                    <option value="D">Sección D</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo"
+                       placeholder="ejemplo@correo.com"
+                       required>
+            </div>
+
+            <div class="campo">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono"
+                       placeholder="Ingresa tu teléfono"
+                       required>
+            </div>
+
+            <button type="submit">REGISTRAR ESTUDIANTE</button>
+
+            <p id="mensaje" role="status" aria-live="polite"></p>
+
+        </form>
+
+        <section id="resultado" class="resultado">
+            <h2>📋 Datos del estudiante</h2>
+            <div id="datos"></div>
         </section>
 
         <footer>
-            <p>Proyecto 3 · Informática · Sistema de Pedidos</p>
-            <p>© Cafetería Escolar</p>
+            <p>Mi Registro Estudiantil © 2026</p>
         </footer>
-
-    </main>
+    </div>
 
 </body>
 </html>
